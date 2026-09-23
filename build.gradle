@@ -1,0 +1,70 @@
+plugins {
+	// 重要:Minecraft 26.1 起官方不再混淆代码,必须用 no-remap 的 loom 插件。
+	// 旧的 'fabric-loom'(带 remap)只适用于 1.21.11 及更早,且会去找并不存在的官方映射表。
+	id 'net.fabricmc.fabric-loom' version '1.17.18'
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	// Loom 已自动加入 Fabric / Mojang(libraries.minecraft.net)/ Maven Central
+}
+
+loom {
+	// 让 access widener 作用于编译期类路径,否则提升可见性只在运行时生效。
+	accessWidenerPath = file("src/main/resources/textcomponentcopy.accesswidener")
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
+	// 26.x 没有混淆,因此:
+	//   - 不再需要 mappings 配置
+	//   - 依赖用普通 configuration,不需要 modImplementation
+	//   - 也没有 remapJar,产物直接来自 jar 任务
+	//
+	// Fabric API 用 compileOnly + runtimeOnly:编译期需要它的 API,
+	// 但不打进模组 jar(Fabric API 是由玩家自行安装的前置)。
+	compileOnly "net.fabricmc:fabric-loader:${project.loader_version}"
+	runtimeOnly "net.fabricmc:fabric-loader:${project.loader_version}"
+	compileOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	runtimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+processResources {
+	inputs.property "version", project.version
+	inputs.property "minecraft_version", project.minecraft_version
+	inputs.property "loader_version", project.loader_version
+
+	filesMatching("fabric.mod.json") {
+		expand(
+			"version": project.version,
+			"minecraft_version": project.minecraft_version,
+			"loader_version": project.loader_version
+		)
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.encoding = "UTF-8"
+	// Minecraft 26.1.2 要求 Java 25
+	it.options.release = 25
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.base.archivesName.get()}" }
+	}
+}

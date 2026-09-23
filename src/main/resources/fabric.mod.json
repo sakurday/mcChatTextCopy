@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "textcomponentcopy",
+	"version": "${version}",
+	"name": "Text Component Copy",
+	"description": "把聊天记录以纯文本或文本组件 JSON 的形式复制到剪贴板,并在聊天框右上角提供入口。",
+	"authors": [
+		"TextComponentCopy contributors"
+	],
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.example.textcomponentcopy.TextComponentCopyClient"
+		]
+	},
+	"mixins": [
+		{
+			"config": "textcomponentcopy.mixins.json",
+			"environment": "client"
+		}
+	],
+	"accessWidener": "textcomponentcopy.accesswidener",
+	"depends": {
+		"fabricloader": ">=${loader_version}",
+		"minecraft": "~${minecraft_version}",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

@@ -1,0 +1,25 @@
+# 复制成 gradle.properties 后按需修改。
+# gradle.properties 已加入 .gitignore,不要提交它。
+
+org.gradle.jvmargs=-Xmx2G
+org.gradle.parallel=true
+
+# Fabric 属性 (https://fabricmc.net/develop/)
+minecraft_version=26.1.2
+loader_version=0.19.5
+fabric_version=0.155.2+26.1.2
+
+# 模组属性
+mod_id=textcomponentcopy
+mod_name=Text Component Copy
+mod_version=1.0.0
+maven_group=com.example.textcomponentcopy
+archives_base_name=textcomponentcopy
+
+# ------------------------------------------------------------------
+# 代理(只有需要时才取消注释)
+# ------------------------------------------------------------------
+# systemProp.http.proxyHost=127.0.0.1
+# systemProp.http.proxyPort=7890
+# systemProp.https.proxyHost=127.0.0.1
+# systemProp.https.proxyPort=7890

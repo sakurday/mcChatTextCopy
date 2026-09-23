@@ -1,0 +1,9 @@
+accessWidener	v2	official
+
+# ChatScreen.init() 在 26.1.2 里是 protected void init(),没有 CallbackInfo,
+# 所以用 @Inject 必须在编译期提升可见性。
+accessible	method	net/minecraft/client/gui/screens/ChatScreen	init	()V
+
+# Screen.addRenderableWidget 是 protected,我们的 mixin 与界面都在别的包里,
+# 提升为 public 才能在代码里直接调用。
+accessible	method	net/minecraft/client/gui/screens/Screen	addRenderableWidget	(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;

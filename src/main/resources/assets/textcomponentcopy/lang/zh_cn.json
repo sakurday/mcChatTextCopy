@@ -1,0 +1,13 @@
+{
+	"textcomponentcopy.button.history": "聊天记录",
+	"textcomponentcopy.button.history.tooltip": "打开聊天记录(可复制为纯文本或文本组件 JSON)",
+	"textcomponentcopy.button.copy": "复制",
+	"textcomponentcopy.button.mode": "格式: %s",
+	"textcomponentcopy.screen.title": "聊天记录",
+	"textcomponentcopy.screen.header": "聊天记录(已捕获 %s / %s 条)",
+	"textcomponentcopy.screen.hint": "点击某一行或它的“复制”按钮。当前格式: %s",
+	"textcomponentcopy.screen.empty": "还没有捕获到消息,先在游戏里聊几句再打开此界面。",
+	"textcomponentcopy.mode.plain": "纯文本",
+	"textcomponentcopy.mode.json": "文本组件 JSON",
+	"textcomponentcopy.status.copied": "已复制 %s 个字符(%s)"
+}

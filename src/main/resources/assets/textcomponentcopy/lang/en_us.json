@@ -1,0 +1,13 @@
+{
+	"textcomponentcopy.button.history": "History",
+	"textcomponentcopy.button.history.tooltip": "Open chat history (copy as plain text or component JSON)",
+	"textcomponentcopy.button.copy": "Copy",
+	"textcomponentcopy.button.mode": "Format: %s",
+	"textcomponentcopy.screen.title": "Chat History",
+	"textcomponentcopy.screen.header": "Chat history (%s / %s captured)",
+	"textcomponentcopy.screen.hint": "Click a row or its Copy button. Current format: %s",
+	"textcomponentcopy.screen.empty": "Nothing captured yet. Chat a bit, then reopen this screen.",
+	"textcomponentcopy.mode.plain": "Plain text",
+	"textcomponentcopy.mode.json": "Component JSON",
+	"textcomponentcopy.status.copied": "Copied %s chars (%s)"
+}

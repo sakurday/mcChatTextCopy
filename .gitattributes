@@ -1,0 +1,13 @@
+# 统一换行符,避免 Windows 上提交后整个仓库都变成 CRLF 差异。
+# Git 会在仓库内保存 LF,检出时按平台决定。
+* text=auto eol=lf
+
+# Windows 批处理必须是 CRLF,否则 cmd 解析会出问题
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 二进制文件不做换行符转换
+*.jar binary
+*.png binary
+*.gif binary
+*.zip binary
